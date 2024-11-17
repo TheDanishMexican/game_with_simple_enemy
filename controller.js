@@ -52,7 +52,7 @@ function tick(time) {
     moveEnemy(deltaTime);
     displayModelPlayer();
     collision(playerObj, enemyObj);
-    // displayPlayerAnimation();
+    displayPlayerAnimation();
 }
 
 function displayModelPlayer() {
@@ -152,9 +152,9 @@ function collision(playerObj, enemyObj) {
 
         visualPlayer.classList.add('spin');
         setTimeout(() => { visualPlayer.classList.remove("spin"); }, 500);
-        return true;
+
     }
-    return false;
+
 }
 
 function moveEnemy(deltaTime) {
