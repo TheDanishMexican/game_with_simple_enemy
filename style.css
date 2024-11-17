@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#game_field {
+    margin-top: 20px;
+    background-color: gray;
+    height: 480px;
+    width: 480px;
+    outline: 10px solid green;
+    position: relative;
+}
+
+#player {
+    background-image: url('./assets/Characters/Character\ 4.png');
+    width: 32px;
+    height: 40px;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    position: absolute;
+    transform-origin: center;
+}
+
+#enemy {
+    background-image: url('./assets/Characters/Character\ 11.png');
+    width: 32px;
+    height: 40px;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    position: absolute;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#game_field {
+    margin-top: 20px;
+    background-color: gray;
+    height: 480px;
+    width: 480px;
+    outline: 10px solid green;
+    position: relative;
+}
+
+#player {
+    background-image: url('./assets/Characters/Character\ 4.png');
+    width: 32px;
+    height: 40px;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    position: absolute;
+}
+
+#enemy {
+    background-image: url('./assets/Characters/Character\ 11.png');
+    width: 32px;
+    height: 40px;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    position: absolute;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 0.5s ease-in-out forwards;
+}
