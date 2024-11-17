@@ -22,7 +22,9 @@ const playerObj = {
     yPos: 50,
     speed: 200,
     width: 32,
-    height: 40
+    height: 40,
+    moving: false,
+    direction: undefined
 };
 const enemyObj = {
     xPos: 208,
@@ -49,6 +51,8 @@ function tick(time) {
     movePlayer(deltaTime);
     moveEnemy(deltaTime);
     displayModelPlayer();
+    collision(playerObj, enemyObj);
+    // displayPlayerAnimation();
 }
 
 function displayModelPlayer() {
@@ -57,21 +61,31 @@ function displayModelPlayer() {
 }
 
 function movePlayer(deltaTime) {
+    playerObj.moving = false;
+
     const newPosition = {
         xPos: playerObj.xPos,
         yPos: playerObj.yPos
     };
 
     if (controls.up) {
+        playerObj.moving = true;
+        playerObj.direction = "up";
         newPosition.yPos -= playerObj.speed * deltaTime;
     }
     if (controls.down) {
+        playerObj.moving = true;
+        playerObj.direction = "down";
         newPosition.yPos += playerObj.speed * deltaTime;
     }
     if (controls.right) {
+        playerObj.moving = true;
+        playerObj.direction = "right";
         newPosition.xPos += playerObj.speed * deltaTime;
     }
     if (controls.left) {
+        playerObj.moving = true;
+        playerObj.direction = "left";
         newPosition.xPos -= playerObj.speed * deltaTime;
     }
 
@@ -79,8 +93,6 @@ function movePlayer(deltaTime) {
         playerObj.xPos = newPosition.xPos;
         playerObj.yPos = newPosition.yPos;
     }
-
-    collision(playerObj, enemyObj);
 }
 
 function keyBoardPressed(event) {
@@ -140,7 +152,9 @@ function collision(playerObj, enemyObj) {
 
         visualPlayer.classList.add('spin');
         setTimeout(() => { visualPlayer.classList.remove("spin"); }, 500);
+        return true;
     }
+    return false;
 }
 
 function moveEnemy(deltaTime) {
@@ -165,5 +179,15 @@ function moveEnemy(deltaTime) {
             enemyObj.xPos = minX;
             enemyObj.movingRight = true;
         }
+    }
+}
+
+function displayPlayerAnimation() {
+    if (playerObj.moving) {
+        visualPlayer.classList.add("animate");
+        visualPlayer.classList.remove("up", "down", "left", "right");
+        visualPlayer.classList.add(playerObj.direction);
+    } else {
+        visualPlayer.classList.remove("animate");
     }
 }
