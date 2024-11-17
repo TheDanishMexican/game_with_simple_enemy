@@ -1,4 +1,7 @@
-window.addEventListener("load", start);
+window.addEventListener("load", () => {
+    startButton.addEventListener("click", start);
+
+});
 
 let lastTime = 0;
 const visualPlayerContainer = document.querySelector("#player-container");
@@ -6,6 +9,7 @@ const visualPlayer = document.querySelector("#player");
 const visualEnemy = document.querySelector("#enemy");
 const gameField = document.querySelector("#game_field");
 const gameFieldRect = gameField.getBoundingClientRect();
+const startButton = document.querySelector("#start-button");
 
 const controls = {
     up: false,
@@ -33,6 +37,8 @@ function start() {
     document.addEventListener("keydown", keyBoardPressed);
     document.addEventListener("keyup", keyBoardReleased);
     requestAnimationFrame(tick);
+    gameField.classList.remove("hidden");
+    startButton.classList.add("hidden");
 }
 
 function tick(time) {

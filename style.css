@@ -1,7 +1,13 @@
 body {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 20px;
     overflow: hidden;
+    flex-direction: row;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #game_field {
@@ -75,4 +81,17 @@ body {
 
 .spin {
     animation: spin 0.5s ease-in-out forwards;
+}
+
+#start-button {
+    padding: 10px;
+    font-size: 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
