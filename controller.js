@@ -149,7 +149,7 @@ function moveEnemy(deltaTime) {
 
     if (enemyObj.movingRight) {
         enemyObj.xPos += enemyObj.speed * deltaTime;
-        if (enemyObj.xPos + enemyWidth >= maxX) {
+        if (enemyObj.xPos >= maxX) {
             enemyObj.xPos = maxX;
             enemyObj.movingRight = false;
         }
